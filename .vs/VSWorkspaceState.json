@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\payments_services.api",
+    "\\src\\payments_services.api\\Controllers",
+    "\\src\\payments_services.application",
+    "\\src\\payments_services.application\\Commands",
+    "\\src\\payments_services.application\\Commands\\Commands",
+    "\\src\\payments_services.application\\Queries",
+    "\\src\\payments_services.application\\Queries\\Handlers",
+    "\\src\\payments_services.application\\Queries\\Queries"
+  ],
+  "SelectedNode": "\\src\\payments_services.application\\Queries\\Handlers\\ConsultarPagosHandler.cs",
+  "PreviewInSolutionExplorer": false
+}
