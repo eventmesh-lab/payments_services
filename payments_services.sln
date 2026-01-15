@@ -11,6 +11,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "payments_services.domain", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "payments_services.infrastructure", "src\payments_services.infrastructure\payments_services.infrastructure.csproj", "{DACBE98A-7600-0988-5F42-99B7B8360FF1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "payment_services.api.Tests", "tests\payment_services.api.Tests\payment_services.api.Tests.csproj", "{3750728A-4492-4DA1-9E0F-30389603612B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "payments_service.application.Tests", "tests\payments_service.application.Tests\payments_service.application.Tests.csproj", "{D4C4F9F7-2BED-4C81-8B0F-BE8CF790C45D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "payments_service.infrastructure.Tests", "tests\payments_service.infrastructure.Tests\payments_service.infrastructure.Tests.csproj", "{A1C65066-5832-47CA-BD26-45D50BD67539}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +39,18 @@ Global
 		{DACBE98A-7600-0988-5F42-99B7B8360FF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DACBE98A-7600-0988-5F42-99B7B8360FF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DACBE98A-7600-0988-5F42-99B7B8360FF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3750728A-4492-4DA1-9E0F-30389603612B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3750728A-4492-4DA1-9E0F-30389603612B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3750728A-4492-4DA1-9E0F-30389603612B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3750728A-4492-4DA1-9E0F-30389603612B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D4C4F9F7-2BED-4C81-8B0F-BE8CF790C45D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4C4F9F7-2BED-4C81-8B0F-BE8CF790C45D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4C4F9F7-2BED-4C81-8B0F-BE8CF790C45D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4C4F9F7-2BED-4C81-8B0F-BE8CF790C45D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1C65066-5832-47CA-BD26-45D50BD67539}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1C65066-5832-47CA-BD26-45D50BD67539}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1C65066-5832-47CA-BD26-45D50BD67539}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1C65066-5832-47CA-BD26-45D50BD67539}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
