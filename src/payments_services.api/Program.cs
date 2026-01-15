@@ -1,4 +1,7 @@
+using MassTransit;
+using Microsoft.EntityFrameworkCore;
 using payments_services.application.Commands.Commands;
+using payments_services.application.Interfaces;
 using payments_services.application.Interfaces;
 using payments_services.domain.Interfaces;
 using payments_services.infrastructure.ExternalServices.Stripe.Adapters;
@@ -8,7 +11,6 @@ using payments_services.infrastructure.Persistence.Repositories;
 using payments_services.infrastructure.Services;
 using Stripe;
 using System.Reflection;
-using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,6 +30,21 @@ var connectionString = builder.Configuration.GetConnectionString("ConnectionPost
 //registrar servicio para la conexion
 
 
+// 1. Configuración de MassTransit (RabbitMQ)
+builder.Services.AddMassTransit(x =>
+{
+
+    x.UsingRabbitMq((context, cfg) =>
+    {
+        cfg.Host("localhost", "/", h =>
+        {
+            h.Username("guest");
+            h.Password("guest");
+        });
+
+    });
+});
+
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(connectionString,
         b => b.MigrationsAssembly("payments_services.infrastructure")));
@@ -36,6 +53,12 @@ builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.Get
 builder.Services.AddHttpClient<UsuarioService>(client =>
 {
     client.BaseAddress = new Uri("http://localhost:7181/api/users/");
+});
+
+builder.Services.AddHttpClient<IActivityService, ActivityService>(client =>
+{
+    client.BaseAddress = new Uri("http://localhost:7182/"); 
+    client.DefaultRequestHeaders.Add("Accept", "application/json");
 });
 
 builder.Services.AddMediatR(cfg =>

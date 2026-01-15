@@ -63,13 +63,10 @@ namespace payments_services.application.Queries.Handlers
 
                 foreach (var pago in historialPagos)
                 {
-                    //Se obtiene la reserva correspondiente al pago desde el Microservicio reservas
-                    var reserva = await _reservaService.ObtenerReservaPorGuid(pago.IdReserva);
-                    var usuario = await _usuarioService.ObtenerUsuarioPorEmail(request.correo);
+                   var usuario = await _usuarioService.ObtenerUsuarioPorEmail(request.correo);
                     listaHistorialPagos.Add(new HistorialPagosDTO
                     {
-                        IdReserva = pago.IdReserva,
-                        IdEvento = reserva.IdEvento,
+                        IdEvento = pago.IdEvento,
                         Id = pago.Id,
                         MontoPago = pago.MontoPago.montoPago,
                         CreatedAt = pago.CreatedAt,

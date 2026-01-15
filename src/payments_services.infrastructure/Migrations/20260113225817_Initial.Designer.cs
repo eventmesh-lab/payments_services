@@ -9,11 +9,11 @@ using payments_services.infrastructure.Persistence.Context;
 
 #nullable disable
 
-namespace payments_services.Infrastructure.Migrations
+namespace payments_services.infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260109004755_AddInicitial")]
-    partial class AddInicitial
+    [Migration("20260113225817_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -34,12 +34,12 @@ namespace payments_services.Infrastructure.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
+                    b.Property<Guid>("IdEvento")
+                        .HasColumnType("uuid");
+
                     b.Property<string>("IdMedioDePago")
                         .IsRequired()
                         .HasColumnType("text");
-
-                    b.Property<Guid>("IdReserva")
-                        .HasColumnType("uuid");
 
                     b.Property<Guid>("IdUsuario")
                         .HasColumnType("uuid");

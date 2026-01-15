@@ -15,7 +15,7 @@ namespace payments_services.application.DTOs
         /// <summary>
         /// Atributo que corresponde al ID de la reserva.
         /// </summary>
-        public Guid idReserva { get; set; }
+        public Guid idEvento { get; set; }
         /// <summary>
         /// Atributo que contiene el correo del usuario que registra el pago.
         /// </summary>

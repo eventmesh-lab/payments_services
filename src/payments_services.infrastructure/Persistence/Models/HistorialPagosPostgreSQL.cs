@@ -14,9 +14,8 @@ namespace payments_services.infrastructure.Persistence.Models
 
         [Required]
         public Guid IdUsuario { get; set; }
-
         [Required]
-        public Guid IdReserva { get; set; }
+        public Guid IdEvento { get; set; }
         [Required]
         public string IdMedioDePago { get; set; }
         [Required]

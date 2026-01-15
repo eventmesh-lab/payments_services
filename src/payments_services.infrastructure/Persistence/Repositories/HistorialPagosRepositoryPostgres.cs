@@ -37,15 +37,33 @@ namespace payments_services.infrastructure.Persistence.Repositories
         }
 
         /// Obtiene una historia de pago por su reserva.
-        public async Task<HistorialPagos?> GetHistoriaDePagoByReserva(Guid idReserva, CancellationToken cancellationToken)
+        public async Task<HistorialPagos?> GetHistorialDePagoByEvento(Guid idEvento, CancellationToken cancellationToken)
         {
             var historialPagosModel = await _dbContext.HistorialPagos
-                .FirstOrDefaultAsync(u => u.IdReserva == idReserva, cancellationToken);
+                .FirstOrDefaultAsync(u => u.IdEvento == idEvento, cancellationToken);
             if (historialPagosModel == null)
             {
                 return null;
             }
             return HistorialPagosPostgreSQLMapper.ToDomain(historialPagosModel);
+        }
+
+        /// Obtiene todas las historia de pago por su reserva.
+        public async Task<List<HistorialPagos>> GetHistorialDePagosByEvento(Guid idEvento, CancellationToken cancellationToken)
+        {
+            var historialPagosModels = await _dbContext.HistorialPagos
+                .Where(u => u.IdEvento == idEvento)
+                .ToListAsync(cancellationToken);
+
+            if (historialPagosModels == null || !historialPagosModels.Any())
+            {
+                return new List<HistorialPagos>();
+            }
+            var resultado = historialPagosModels
+                .Select(model => HistorialPagosPostgreSQLMapper.ToDomain(model))
+                .ToList();
+
+            return resultado;
         }
 
         /// Obtiene todos los pagos de un usuario existentes en el repositorio.
@@ -62,11 +80,11 @@ namespace payments_services.infrastructure.Persistence.Repositories
             return historialesPagos;
         }
 
-        /// Obtiene una historia de pago por su reserva.
+        /// Obtiene una historia de pago por el evento.
         public async Task<bool> ExistePago(Guid idReserva, CancellationToken cancellationToken)
         {
             var historialPagosModel = await _dbContext.HistorialPagos
-                .FirstOrDefaultAsync(u => u.IdReserva == idReserva, cancellationToken);
+                .FirstOrDefaultAsync(u => u.IdEvento == idReserva, cancellationToken);
             if (historialPagosModel == null)
             {
                 return false;
@@ -76,11 +94,13 @@ namespace payments_services.infrastructure.Persistence.Repositories
 
         public async Task<List<HistorialPagos>> GetAllPagosAsync(CancellationToken cancellationToken)
         {
+            Console.WriteLine("hola");
             var historialPagosModels = await _dbContext.HistorialPagos.ToListAsync(cancellationToken);
-
+            Console.WriteLine("hola2");
             var historialPagos = historialPagosModels
                 .Select(HistorialPagosPostgreSQLMapper.ToDomain)
                 .ToList();
+            Console.WriteLine("hola3");
 
             return historialPagos;
         }

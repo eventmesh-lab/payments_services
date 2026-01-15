@@ -24,7 +24,7 @@ namespace payments_services.infrastructure.Mappers
             {
                 Id = historialPagos.Id,
                 IdUsuario = historialPagos.IdUsuario,
-                IdReserva = historialPagos.IdReserva,
+                IdEvento = historialPagos.IdEvento,
                 IdMedioDePago = historialPagos.IdMedioDePago,
                 Monto = historialPagos.MontoPago.montoPago,
                 UltimosCuatroDigitos = historialPagos.UltimosDigitosTarjeta,
@@ -38,7 +38,7 @@ namespace payments_services.infrastructure.Mappers
             {
                 Id = historialPagosPostgres.Id,
                 IdUsuario = historialPagosPostgres.IdUsuario,
-                IdReserva = historialPagosPostgres.IdReserva,
+                IdEvento = historialPagosPostgres.IdEvento,
                 IdMedioDePago = historialPagosPostgres.IdMedioDePago,
                 MontoPago = new MontoHistorialPagosVO(historialPagosPostgres.Monto), // VO desde decimal
                 UltimosDigitosTarjeta = historialPagosPostgres.UltimosCuatroDigitos,

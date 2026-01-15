@@ -10,9 +10,10 @@ namespace payments_services.domain.Interfaces
     public interface IHistorialPagosRepositoryPostgres
     {
         Task<Guid> RegistrarHistorialPagosAsync(HistorialPagos historialPagos);
-        Task<HistorialPagos?> GetHistoriaDePagoByReserva(Guid idReserva, CancellationToken cancellationToken);
+        Task<HistorialPagos?> GetHistorialDePagoByEvento(Guid idEvento, CancellationToken cancellationToken);
         Task<List<HistorialPagos>> GetHistorialPagosByUserAsync(Guid userId, CancellationToken cancellationToken);
         Task<bool> ExistePago(Guid idReserva, CancellationToken cancellationToken);
         Task<List<HistorialPagos>> GetAllPagosAsync(CancellationToken cancellationToken);
+        Task<List<HistorialPagos>> GetHistorialDePagosByEvento(Guid idEvento, CancellationToken cancellationToken);
     }
 }

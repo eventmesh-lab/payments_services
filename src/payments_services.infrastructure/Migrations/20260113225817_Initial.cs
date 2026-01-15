@@ -3,10 +3,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace payments_services.Infrastructure.Migrations
+namespace payments_services.infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class AddInicitial : Migration
+    public partial class Initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -17,7 +17,7 @@ namespace payments_services.Infrastructure.Migrations
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     IdUsuario = table.Column<Guid>(type: "uuid", nullable: false),
-                    IdReserva = table.Column<Guid>(type: "uuid", nullable: false),
+                    IdEvento = table.Column<Guid>(type: "uuid", nullable: false),
                     IdMedioDePago = table.Column<string>(type: "text", nullable: false),
                     Monto = table.Column<decimal>(type: "numeric", nullable: false),
                     UltimosCuatroDigitos = table.Column<string>(type: "text", nullable: false),

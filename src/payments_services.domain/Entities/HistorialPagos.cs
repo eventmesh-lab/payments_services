@@ -21,13 +21,10 @@ namespace payments_services.domain.Entities
         /// </summary>
         public Guid IdUsuario { get; set; }
         /// <summary>
-        /// Atributo que corresponde al ID de la reserva perteneciente al pago realizado  .
-        /// </summary>
-        public Guid IdReserva { get; set; }
-        /// <summary>
         /// Atributo que corresponde al ID del medio de pago con el que se realizó el pago  .
         /// </summary>
         public string IdMedioDePago { get; set; }
+        public Guid IdEvento { get; set; }
         /// <summary>
         /// Atributo que corresponde al ID del medio de pago con el que se realizó el pago  .
         /// </summary>
@@ -48,11 +45,11 @@ namespace payments_services.domain.Entities
         public HistorialPagos() { }
 
         [JsonConstructor]
-        public HistorialPagos(Guid idUsuario, Guid iddReserva, string idMedioDePago, MontoHistorialPagosVO montoPago, string ultimosDigitosTarjeta, string tipoMedioDePago)
+        public HistorialPagos(Guid idUsuario, Guid idEvento, string idMedioDePago, MontoHistorialPagosVO montoPago, string ultimosDigitosTarjeta, string tipoMedioDePago)
         {
             Id = Guid.NewGuid();
             IdUsuario = idUsuario;
-            IdReserva = iddReserva;
+            IdEvento = idEvento;
             IdMedioDePago = idMedioDePago;
             MontoPago = montoPago;
             CreatedAt = DateTime.UtcNow;

@@ -302,5 +302,17 @@ namespace payments_services.infrastructure.ExternalServices.Stripe.Services
 
 
         }
+        public async Task<string> ObtenerIdClientePorEmailAsync(string email)
+        {
+            var opciones = new CustomerListOptions
+            {
+                Email = email,
+                Limit = 1
+            };
+            var clientes = await _customerService.ListAsync(opciones);
+
+            // Devuelve el ID del primero que encuentre, o null si no hay.
+            return clientes.Data.FirstOrDefault()?.Id;
+        }
     }
 }

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using payments_services.application.Commands.Commands;
+using payments_services.application.Interfaces;
 
 namespace payments_services.application.Commands.Handlers
 {

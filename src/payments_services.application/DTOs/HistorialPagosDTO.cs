@@ -11,11 +11,8 @@ namespace payments_services.application.DTOs
     /// </summary>
     public class HistorialPagosDTO
     {
-        public Guid IdReserva { get; set; }
       
         public Guid IdEvento { get; set; }
-
-        public string NombreEvento { get; set; }
         
         public Guid Id { get; set; }
        

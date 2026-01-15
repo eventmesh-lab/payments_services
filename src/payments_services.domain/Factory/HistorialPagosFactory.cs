@@ -9,10 +9,10 @@ namespace payments_services.domain.Factory
 {
     public static class HistorialPagosFactory
     {
-        public static HistorialPagos CrearHistorialPagos(Guid idusuario, Guid idReserva, string idMedioPago, decimal montoPago, string ultimosdigitos, string tipoMedioDePago)
+        public static HistorialPagos CrearHistorialPagos(Guid idusuario, Guid idEvento, string idMedioPago, decimal montoPago, string ultimosdigitos, string tipoMedioDePago)
         {
             var montoPagoVO = new MontoHistorialPagosVO(montoPago);
-            return new HistorialPagos(idusuario, idReserva, idMedioPago, montoPagoVO, ultimosdigitos, tipoMedioDePago);
+            return new HistorialPagos(idusuario, idEvento, idMedioPago, montoPagoVO, ultimosdigitos, tipoMedioDePago);
         }
     }
 }

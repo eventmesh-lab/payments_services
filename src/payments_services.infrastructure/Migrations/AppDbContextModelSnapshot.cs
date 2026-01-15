@@ -8,7 +8,7 @@ using payments_services.infrastructure.Persistence.Context;
 
 #nullable disable
 
-namespace payments_services.Infrastructure.Migrations
+namespace payments_services.infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
     partial class AppDbContextModelSnapshot : ModelSnapshot
@@ -31,12 +31,12 @@ namespace payments_services.Infrastructure.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
+                    b.Property<Guid>("IdEvento")
+                        .HasColumnType("uuid");
+
                     b.Property<string>("IdMedioDePago")
                         .IsRequired()
                         .HasColumnType("text");
-
-                    b.Property<Guid>("IdReserva")
-                        .HasColumnType("uuid");
 
                     b.Property<Guid>("IdUsuario")
                         .HasColumnType("uuid");

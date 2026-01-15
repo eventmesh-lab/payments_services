@@ -5,6 +5,8 @@ using payments_services.application.DTOs;
 using payments_services.application.Queries.Queries;
 using Stripe.Forwarding;
 using System.Threading;
+using payments_services.domain.Entities;
+using payments_services.domain.Interfaces;
 
 namespace payments_services.api.Controllers
 {
@@ -16,9 +18,13 @@ namespace payments_services.api.Controllers
         /// Atributo que se encarga de enviar solicitudes (commands/queries) mediante el patrón mediador
         /// </summary>
         private readonly IMediator _mediator;
-        public PaymentsController(IMediator mediator)
+
+        private readonly IHistorialPagosRepositoryPostgres _historialService;
+
+        public PaymentsController(IMediator mediator, IHistorialPagosRepositoryPostgres historialPagos)
         {
             _mediator = mediator;
+            _historialService = historialPagos;
         }
 
         /// <summary>
@@ -37,6 +43,7 @@ namespace payments_services.api.Controllers
 
             return BadRequest(new ResultadoDTO { Mensaje = "El medio de pago no pudo ser registrada.", Exito = false });
         }
+
         /// <summary>
         /// Endpoint encargado de consultar un medio de pago.
         /// </summary>
@@ -74,7 +81,7 @@ namespace payments_services.api.Controllers
             {
                 var resultado = await _mediator.Send(new RegistrarPagoCommand(medioDePagoDto));
                 return Ok(new ResultadoDTO { Mensaje = "El pago se ha registrado exitosamente.", Exito = true });
-                
+
             }
             catch (ApplicationException ex)
             {
@@ -98,6 +105,32 @@ namespace payments_services.api.Controllers
         {
             var resultado = await _mediator.Send(new ConsultarPagosQuery());
             return Ok(resultado);
+        }
+
+        [HttpGet("historial/{idEvento}")]
+        public async Task<IActionResult> GetHistorialDePagoByEvento(Guid idEvento, CancellationToken cancellationToken)
+        {
+            try
+            {
+                List<HistorialPagos> historial =
+                    await _historialService.GetHistorialDePagosByEvento(idEvento, cancellationToken);
+
+
+
+                if (historial == null || !historial.Any())
+                {
+                    return Ok(new List<HistorialPagosDTO>());
+                }
+
+                return Ok(historial);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new
+                {
+                    message = "Ocurrió un error interno al consultar el historial de pagos.", details = ex.Message
+                });
+            }
         }
     }
 }

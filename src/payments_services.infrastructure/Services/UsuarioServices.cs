@@ -43,7 +43,7 @@ namespace payments_services.infrastructure.Services
             }
 
             var guidString = await response.Content.ReadAsStringAsync();
-            Console.WriteLine($"🔹 GUID recibido desde el microservicio (antes de conversión): {guidString}");
+            Console.WriteLine($"GUID recibido desde el microservicio (antes de conversión): {guidString}");
 
             if (Guid.TryParse(guidString.Trim('"'), out Guid userId))
             {
@@ -65,7 +65,7 @@ namespace payments_services.infrastructure.Services
             }
 
             var guidString = await response.Content.ReadAsStringAsync();
-            Console.WriteLine($"🔹 GUID recibido desde el microservicio (antes de conversión): {guidString}");
+            Console.WriteLine($"GUID recibido desde el microservicio (antes de conversión): {guidString}");
 
             if (Guid.TryParse(guidString.Trim('"'), out Guid userId))
             {

@@ -79,5 +79,7 @@ namespace payments_services.domain.Interfaces
         /// <param name="email">Parametro que contiene el correo del usuario a consultar.</param>
         /// <returns>Retorna un valor booleano dependiendo de la respuesta de la API de stripe.</returns>
         Task<bool> ExisteClienteConEmailAsync(string email);
+
+        Task<string> ObtenerIdClientePorEmailAsync(string email);
     }
 }
